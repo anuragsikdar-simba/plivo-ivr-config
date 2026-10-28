@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <!-- Step 1: Ring Prashant first for 15 seconds -->
-    <Dial callerId="+912264232615" timeout="15">
+    <!-- Step 1: Ring Prashant first for 15 seconds (passing client CLI) -->
+    <Dial timeout="15">
         <Number>+916232147614</Number>
     </Dial>
 
     <!-- Step 2: Fallback to Khushi for 15 seconds if Prashant does not answer -->
-    <Dial callerId="+912264232615" timeout="15">
+    <Dial timeout="15">
         <Number>+917024145570</Number>
     </Dial>
 
