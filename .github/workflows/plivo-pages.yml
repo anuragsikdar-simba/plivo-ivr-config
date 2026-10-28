@@ -1,0 +1,41 @@
+name: Deploy PlivoXML to Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - plivo-inbound.xml
+      - .github/workflows/plivo-pages.yml
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - name: Stage endpoint file only
+        run: |
+          mkdir -p _site
+          cp plivo-inbound.xml _site/plivo-inbound.xml
+
+      - uses: actions/configure-pages@v5.0.0
+
+      - uses: actions/upload-pages-artifact@v4.0.0
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4.0.5
