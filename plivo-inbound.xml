@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <!-- Step 1: Ring khushi first for 20 seconds (passing client CLI) -->
-    <Dial timeout="20">
+    <Speak language="en-IN" voice="WOMAN">Thank you for calling. Please wait while we connect you to an executive.</Speak>
+
+    <!-- Step 1: Ring Khushi -->
+    <Dial callerId="912264232615" timeout="20" timeLimit="600" redirect="false"
+          callbackUrl="https://script.google.com/macros/s/AKfycby4VCoWiI96knKpiDdz17nZLtXENXHtigIM-MyZZ85FBFNIOU6Gv7U6EgSQulY-cYcHBg/exec"
+          callbackMethod="POST">
         <Number>917024145570</Number>
     </Dial>
 
-    <!-- Step 2: Fallback to Prashant for 20 seconds if Prashant does not answer -->
-    <Dial timeout="20">
-        <Number>+916232147614</Number>
+    <!-- Step 2: Ring Prashant -->
+    <Dial callerId="912264232615" timeout="20" timeLimit="600" redirect="false"
+          callbackUrl="https://script.google.com/macros/s/AKfycby4VCoWiI96knKpiDdz17nZLtXENXHtigIM-MyZZ85FBFNIOU6Gv7U6EgSQulY-cYcHBg/exec"
+          callbackMethod="POST">
+        <Number>916232147614</Number>
     </Dial>
 
-    <!-- Step 2: Fallback to amit for 20 seconds if Prashant does not answer -->
-    <Dial timeout="20">
-        <Number>+917024223371</Number>
+    <!-- Step 3: Ring Amit -->
+    <Dial callerId="912264232615" timeout="20" timeLimit="600" redirect="false"
+          callbackUrl="https://script.google.com/macros/s/AKfycby4VCoWiI96knKpiDdz17nZLtXENXHtigIM-MyZZ85FBFNIOU6Gv7U6EgSQulY-cYcHBg/exec"
+          callbackMethod="POST">
+        <Number>917024223371</Number>
     </Dial>
 
-    <!-- Step 3: Voicemail / fallback announcement if both miss the call -->
-    <Speak language="en-IN" voice="WOMAN">
-        Our executives are currently busy on another call. We have registered your inquiry and will call you back shortly.
-    </Speak>
+    <Speak language="en-IN" voice="WOMAN">Our executives are currently busy on another call. We have registered your inquiry and will call you back shortly.</Speak>
 </Response>
