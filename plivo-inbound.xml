@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <!-- Step 1: Ring Prashant first for 15 seconds (passing client CLI) -->
-    <Dial timeout="15">
+    <!-- Step 1: Ring khushi first for 20 seconds (passing client CLI) -->
+    <Dial timeout="20">
+        <Number>917024145570</Number>
+    </Dial>
+
+    <!-- Step 2: Fallback to Prashant for 20 seconds if Prashant does not answer -->
+    <Dial timeout="20">
         <Number>+916232147614</Number>
     </Dial>
 
-    <!-- Step 2: Fallback to Khushi for 15 seconds if Prashant does not answer -->
-    <Dial timeout="15">
-        <Number>+917024145570</Number>
+    <!-- Step 2: Fallback to amit for 20 seconds if Prashant does not answer -->
+    <Dial timeout="20">
+        <Number>+917024223371</Number>
     </Dial>
 
     <!-- Step 3: Voicemail / fallback announcement if both miss the call -->
